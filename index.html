@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Thảo, lời xin lỗi từ đáy lòng anh</title>
+    <style>
+        @import url('https://googleapis.com');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffeef2;
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Hiệu ứng phong bì */
+        .envelope-wrapper {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background-color: #f08080;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border-radius: 0 0 10px 10px;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+            margin-bottom: 50px;
+        }
+
+        .envelope-wrapper:hover {
+            transform: translateY(-5px);
+        }
+
+        .envelope-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            left: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 150px solid #f08080;
+            border-top: 0;
+            transform-origin: bottom;
+            transition: transform 0.4s ease 0.2s;
+            z-index: 3;
+        }
+
+        /* Khi mở bao thư */
+        .envelope-wrapper.open::before {
+            transform: rotateX(180px);
+            z-index: 1;
+            border-bottom-color: #e57373;
+        }
+
+        .envelope-wrapper.open {
+            display: none;
+        }
+
+        .heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            color: #ff4d6d;
+            z-index: 4;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.15); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .click-text {
+            text-align: center;
+            color: #e57373;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        /* Nội dung bức thư */
+        .letter {
+            display: none;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            width: 100%;
+            box-sizing: border-box;
+            border-left: 5px solid #ff4d6d;
+        }
+
+        .letter.show {
+            display: block;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff4d6d;
+            font-size: 36px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #4a4a4a;
+            text-align: justify;
+            margin-bottom: 15px;
+            white-space: pre-line;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            text-align: right;
+            font-size: 28px;
+            color: #ff4d6d;
+            margin-top: 30px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Phong bì hiển thị ban đầu -->
+        <div class="envelope-wrapper" id="envelope" onclick="openLetter()">
+            <div class="heart">❤️</div>
+        </div>
+        <div class="click-text" id="hint">Thảo ơi, bấm vào chiếc thư này để đọc nhé...</div>
+
+        <!-- Nội dung thư xin lỗi -->
+        <div class="letter" id="letterContent">
+            <h1>Gửi Thảo - Cô gái anh thương nhất...</h1>
+            
+            <p>Thảo ơi,</p>
+            
+            <p>Khi anh ngồi viết những dòng này, lòng anh nặng trĩu những hối hận và nuối tiếc. Anh biết những ngày qua em đã phải chịu đựng rất nhiều ấm ức, tổn thương và cả sự thất vọng vì anh. Anh tự ghét bỏ chính bản thân mình khi nhớ lại những lúc anh lớn tiếng, quát tháo hay những lần vô cớ dỗi hờn, gieo rắc sự mệt mỏi lên mối quan hệ của hai đứa.</p>
+            
+            <p>Anh nhận ra mình thật tồi tệ. Thay vì là chỗ dựa bình yên, là người che chở cho em trước bão giông, thì chính anh lại là người tạo ra bão giông cho em. Mỗi khi tức giận, anh đã không làm chủ được cảm xúc, để cái tôi quá lớn và những lời nói nặng nề làm tổn thương người con gái mà anh luôn tự hứa sẽ trân trọng suốt đời. Nhìn em buồn, nhìn em im lặng vì đau lòng, tim anh thắt lại nhưng sự cứng đầu đáng ghét lúc đó lại ngăn anh quỳ xuống ôm lấy em.</p>
+            
+            <p>Anh không muốn viện cớ cho những sai lầm của mình. Việc anh chửi lớn hay dỗi vô cớ hoàn toàn là lỗi của anh, là sự ích kỷ và thiếu chín chắn trong tình yêu. Nhưng Thảo ơi, xin em hãy tin anh, những lời nói lúc nóng giận hoàn toàn không phải là những gì anh thực sự nghĩ về em. Anh yêu em nhiều hơn tất cả những gì anh có thể nói.</p>
+            
+            <p>Anh sợ lắm. Anh sợ sự im lặng này của em, sợ khoảng cách giữa chúng ta ngày một lớn dần và sợ nhất là phải thức dậy mà không có em bên cạnh. Anh không muốn và không thể tưởng tượng nổi một ngày nào đó hai chúng ta sẽ trở thành người dưng. Anh không muốn chia tay, Thảo ạ. Mất em là điều đáng sợ nhất mà anh không bao giờ dám nghĩ tới.</p>
+            
+            <p>Cho anh xin lỗi nhé, Thảo ơi. Hãy cho anh một cơ hội cuối cùng để sửa sai. Anh hứa từ nay sẽ học cách kiềm chế, học cách lắng nghe em nhiều hơn và tuyệt đối không bao giờ dùng những lời lớn tiếng để tổn thương em nữa. Hãy cho anh thêm một cơ hội để được yêu thương, chăm sóc và bù đắp lại tất cả những tổn thương anh đã gây ra cho em, được không em?</p>
+            
+            <p>Anh đợi em...</p>
+            
+            <div class="signature">Người yêu em rất nhiều</div>
+        </div>
+    </div>
+
+    <script>
+        function openLetter() {
+            // Ẩn phong bì và dòng chữ gợi ý
+            document.getElementById('envelope').classList.add('open');
+            document.getElementById('hint').style.display = 'none';
+            
+            // Hiển thị bức thư sau khi phong bì mở
+            setTimeout(() => {
+                document.getElementById('letterContent').classList.add('show');
+            }, 300);
+        }
+    </script>
+</body>
+</html>
